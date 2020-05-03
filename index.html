@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:500,800&display=swap" rel="stylesheet">
+        <title>Form Validator</title>
+
+        <style media="screen">
+
+            :root {
+                --color: #EC5820;
+            }
+
+            body, input, button {
+                font-family: 'Raleway', sans-serif;
+            }
+
+            body {
+                margin: 118px 320px 0;
+                color: var(--color);
+            }
+
+            input {
+                letter-spacing: 2px;
+                color: inherit;
+                font-weight: 500;
+                font-size: 24px;
+                width: 600px;
+                display: block;
+                outline: none;
+                border: none;
+                border-bottom: 2px solid;
+                padding: 4px 10px;
+                margin: 42px 0;
+            }
+
+            ::placeholder {
+                color: inherit;
+                opacity: .6;
+            }
+
+            button {
+                font-size: 24px;
+                outline: none;
+                border: none;
+                border: 3px solid;
+                background-color: white;
+                color: var(--color);
+                padding: 6px 38px;
+                border-radius: 1000px;
+                transition: all .3s;
+            }
+
+            button:hover {
+                background-color: var(--color);
+                color: white;
+                border-color: var(--color);
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+
+        <h1>Register</h1>
+        <form id="register">
+            <input type="username" name="username" placeholder="Username" required username>
+            <input type="password" name="pass" placeholder="Password" required>
+            <input type="password" name="con_pass" placeholder="Confirm Password">
+            <button type="submit" name="button">Register</button>
+        </form>
+
+
+        <script type="text/javascript">
+
+            let form = document.getElementById("register");
+
+            function validateForm(){
+                form.username.setCustomValidity("");
+                form.pass.setCustomValidity("");
+                form.con_pass.setCustomValidity("");
+
+
+                if(form.username.value.length < 6){
+                    form.username.setCustomValidity("Username should be atleast 6 characters.");
+                }
+
+                if(form.pass.value.length < 6){
+                    form.pass.setCustomValidity("Password should be atleast 6 characters.");
+                }
+
+                if(form.pass.value != form.con_pass.value){
+                    form.con_pass.setCustomValidity("Password and Confirm Password should be same.");
+                }
+
+            }
+
+            form.addEventListener("input" , validateForm);
+
+        </script>
+    </body>
+</html>
